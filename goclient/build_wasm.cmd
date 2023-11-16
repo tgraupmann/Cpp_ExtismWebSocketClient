@@ -41,6 +41,9 @@ REM This WebAssembly format is compatible with Extism
 SET GOOS=wasip1
 SET GOARCH=wasm
 
+go build -o hello.wasm hello.go
+%EXTISM% call hello.wasm _start --input "Benjamin" --wasi
+
 go build -o clientWait.wasm clientWait.go
 %EXTISM% call clientWait.wasm _start --input "Benjamin" --wasi
 
