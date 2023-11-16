@@ -21,7 +21,7 @@ DEL /Q main.wasm
 ECHO main.wasm deleted
 DIR
 go mod init goclient
-go get github.com/extism/go-pdk
+go get github.com/extism/go-pdk@main
 tinygo build -o main.wasm -target wasi main.go
 ECHO *** main.wasm created ***
 DIR
