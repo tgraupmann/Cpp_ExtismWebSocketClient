@@ -37,9 +37,10 @@ DIR
 
 %EXTISM% call main.wasm greet --input "Benjamin" --wasi
 
-REM This WebAssembly format is not supported by Extism
+REM This WebAssembly format is compatible with Extism
 SET GOOS=wasip1
 SET GOARCH=wasm
+go build -o client.wasm client.go
 go build -o goWithWebSockets.wasm goWithWebSockets.go
 
 %EXTISM% call goWithWebSockets.wasm _start --input "Benjamin" --wasi
