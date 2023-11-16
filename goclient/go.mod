@@ -2,4 +2,8 @@ module goclient
 
 go 1.21.4
 
-require github.com/extism/go-pdk v1.0.0-rc1.0.20231030192639-2bf07ca8fb5f // indirect
+require (
+	github.com/extism/go-pdk v1.0.0-rc2 // indirect
+	github.com/gorilla/websocket v1.5.1 // indirect
+	golang.org/x/net v0.17.0 // indirect
+)
