@@ -7,11 +7,7 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-//export _start
-func _start() {
-
-	fmt.Println("Golang: Invoked _start()")
-
+func main() {
 	serverAddr := "ws://localhost:8080/ws" // Change this to your WebSocket server address
 
 	// Establish WebSocket connection
@@ -37,5 +33,3 @@ func readMessages(conn *websocket.Conn) {
 		fmt.Println("Received message:", string(message))
 	}
 }
-
-func main() {}

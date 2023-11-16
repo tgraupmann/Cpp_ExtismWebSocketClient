@@ -17,11 +17,19 @@ REM
 REM Set the full path to extism.exe
 SET EXTISM="%USERPROFILE%\Downloads\extism-v0.3.3-windows-amd64\extism.exe"
 
+SET GOARCH=amd64
+SET GOOS=windows
+CALL go run hello.go
+
+SET GOARCH=amd64
+SET GOOS=windows
+REM CALL go run client.go
+
 DEL /Q main.wasm
 ECHO main.wasm deleted
 DIR
 go mod init goclient
-go get github.com/gorilla/websocket 
+go get github.com/gorilla/websocket
 go get github.com/extism/go-pdk@main
 tinygo build -o main.wasm -target wasi main.go
 ECHO *** main.wasm created ***
@@ -35,3 +43,10 @@ SET GOARCH=wasm
 go build -o goWithWebSockets.wasm goWithWebSockets.go
 
 %EXTISM% call goWithWebSockets.wasm _start --input "Benjamin" --wasi
+
+REM tinygo build -o goWithWebSockets.wasm -target wasi goWithWebSockets.go
+REM
+REM ERROR:
+REM
+REM wasm-ld: error: C:\Users\tgrau\AppData\Local\Temp\tinygo3115611328\main.o: undefined symbol: crypto/internal/bigmod.addMulVVW1024
+REM
