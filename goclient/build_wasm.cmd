@@ -40,9 +40,14 @@ DIR
 REM This WebAssembly format is compatible with Extism
 SET GOOS=wasip1
 SET GOARCH=wasm
-go build -o client.wasm client.go
-go build -o goWithWebSockets.wasm goWithWebSockets.go
 
+go build -o clientWait.wasm clientWait.go
+%EXTISM% call clientWait.wasm _start --input "Benjamin" --wasi
+
+go build -o client.wasm client.go
+%EXTISM% call client.wasm _start --input "Benjamin" --wasi
+
+go build -o goWithWebSockets.wasm goWithWebSockets.go
 %EXTISM% call goWithWebSockets.wasm _start --input "Benjamin" --wasi
 
 REM tinygo build -o goWithWebSockets.wasm -target wasi goWithWebSockets.go
